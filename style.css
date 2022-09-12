@@ -1,0 +1,66 @@
+body {
+    /* background-image: var(--background-image); */
+    margin: 0px;
+    padding: 0px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: white;
+    background-color: rgb(17, 17, 56);
+}
+
+
+/* all the divs inside the navigation bar should be placed side by side*/
+.navigation-bar ul {
+    display: flex;
+    list-style-type: none;
+    height: 89px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    align-items: center;
+    padding: 2%;
+    color: white;
+}
+
+.search-bar {
+    height: 25%;
+    display: flex;
+    /* cursor: pointer; */
+    padding: 10px 20px;
+    background: #fff;
+    border-radius: 30px;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.search-bar input {
+    outline: none;
+    border: none;
+    font-weight: 500;
+}
+
+.search-bar a {
+    padding: 0 5px;
+}
+
+.notification-bell {
+    padding-left: 450px;
+    padding-right: 50px;
+}
+
+.logo img {
+    height: 75px;
+    width: 200px;
+    padding: 0 75px 0 0;
+    /* border-radius: 50%; */
+}
+
+.fav {
+    padding: 0 75px 0 0;
+}
+
+.profile img {
+    /* padding-left: 25px; */
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
