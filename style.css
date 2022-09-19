@@ -1,45 +1,70 @@
-body {
-    /* background-image: var(--background-image); */
-    margin: 0px;
-    padding: 0px;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
     font-family: "Segoe UI", Arial, sans-serif;
     color: white;
-    background-color: rgb(17, 17, 56);
+    /* background: #121213; */
+    background: #111727;
 }
 
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-/* all the divs inside the navigation bar should be placed side by side*/
+header {
+    position: relative;
+    width: 90%;
+    height: 10%;
+    /* border: 1px solid #fff; */
+    background: #111727;
+}
+
+/* Nav Section */
 .navigation-bar ul {
     display: flex;
     list-style-type: none;
-    height: 89px;
+    height: 90%;
     flex-direction: row;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
+    /* justify-content: center; */
     align-items: center;
-    padding: 2%;
+    padding: 0 2%;
     color: white;
 }
 
 .search-bar {
     height: 25%;
     display: flex;
-    /* cursor: pointer; */
+    cursor: pointer;
     padding: 10px 20px;
     background: #fff;
+    /* background: transparent; */
     border-radius: 30px;
     align-items: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); */
 }
 
 .search-bar input {
     outline: none;
     border: none;
     font-weight: 500;
+    background: #fff;
 }
 
 .search-bar a {
     padding: 0 5px;
+    background: #fff;
+}
+
+.search-bar .fas {
+    color: blue;
+    background: #fff;
 }
 
 .notification-bell {
@@ -48,7 +73,7 @@ body {
 }
 
 .logo img {
-    height: 75px;
+    height: 75%;
     width: 200px;
     padding: 0 75px 0 0;
     /* border-radius: 50%; */
@@ -60,7 +85,661 @@ body {
 
 .profile img {
     /* padding-left: 25px; */
-    height: 50px;
+    height: 75%;
     width: 50px;
     border-radius: 50%;
+}
+
+/* End of Nav Section */
+.mainContent {
+    position: relative;
+    width: 90%;
+    height: 75%;
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid #fff; */
+    /* box-shadow: 5px 0px 2px #090f1f; */
+    overflow: auto;
+}
+
+.mainContent::-webkit-scrollbar {
+    display: none;
+}
+
+.mainContent main {
+    position: relative;
+    width: 75%;
+    height: 100%;
+    /* border: 1px solid #fff; */
+    /* background: #111727; */
+    display: flex;
+    flex-direction: column;
+}
+
+#playlist {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+#playlist img {
+    padding: 0 5px 0 0;
+    width: 25%;
+    box-sizing: border-box;
+    transition: all 1s ease-in-out;
+    /* transition: transform 0.7s ease-in-out; */
+}
+
+#playlist img:hover {
+    transform: scale(1.2);
+}
+
+#latestRelease {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+#latestRelease h3 {
+    margin: 20px 0 10px 10px;
+}
+
+#latestRelease .latestReleaseImages {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+    /* transition: box-shadow ease-in-out 0.3s; */
+}
+
+#latestRelease .latestReleaseImages .latestReleaseCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* padding: 2%; */
+    margin: 0.5%;
+    transition: box-shadow ease-in-out 0.3s;
+    width: 35%;
+    font-size: 10px;
+}
+
+#latestRelease .latestReleaseImages .latestReleaseCard:hover {
+    box-shadow: 0px 0px 2px 1px white;
+}
+
+
+#latestRelease .latestReleaseImages .latestReleaseCard img {
+    padding: 0 5px 0 0;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+#latestRelease .latestReleaseImages .latestReleaseCard.song-description {
+    margin: auto 10%;
+}
+
+/* options is the class for the 3 dots which needs to be clicked to trigger the latest release drop down menu */
+#latestRelease .latestReleaseImages .latestReleaseCard .options {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap-reverse;
+    text-align: right;
+    margin-left: auto;
+    margin-right: 2%;
+    margin-top: 2%;
+}
+
+/* this is for the latest release drop down menu */
+#latestRelease .latestReleaseImages .latestReleaseCard .latest-release-dropdown {
+    position: absolute;
+    background-color: darkslateblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+    top: 20px;
+    right: 0px;
+    overflow: hidden;
+    z-index: 2;
+    border: 1px solid black;
+    box-shadow: 0px 0px 2px 1px black;
+    transition: all ease-in-out 0.3s;
+}
+
+/* icon in the latest release drop down */
+#latestRelease .latestReleaseImages .latestReleaseCard .fa-ellipsis-h {
+    cursor: pointer;
+}
+
+/* this input is for the latest release drop down */
+#latestRelease .latestReleaseImages .latestReleaseCard input[type="checkbox"] {
+    display: none;
+}
+
+/* checking it, will trigger the latest release dropdown */
+#latestRelease .latestReleaseImages .latestReleaseCard input[type="checkbox"]:checked~.latest-release-dropdown {
+    width: max-content;
+    height: auto;
+    opacity: 1;
+    padding: 5px;
+}
+
+/* options in the lastest release drop down */
+.drop-item p {
+    text-align: center;
+}
+
+/* popular artists */
+.popular-artists {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top: 2%;
+    box-sizing: border-box;
+}
+
+/* container of the popular artists */
+.popular-artist-content {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* images in the popular artists section */
+.popular-artists div a img {
+    width: 10vw;
+    min-width: 60px;
+    min-height: 60px;
+    height: 10vw;
+    border-radius: 50%;
+    margin: 2%;
+}
+
+/* content of the container in popular artists section */
+.popular-artists>div {
+    /* position: relative; */
+    margin: 5px;
+    text-align: center;
+}
+
+/* I generally use the combination of 3 properties, i.e. display:flex, justify content and align items to position an element */
+/* at the center of the screen. this is my favourite way. there are other options too, but I prefer this one because */
+/* it also takes care of the flexibility of the contents of the div */
+.popular-artist-content>a>div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.popular-artist-content>a>div>div {
+    position: absolute;
+    display: flex;
+    /* top: 0px;
+    left: 0px; */
+    top: 0px;
+    width: 10vw;
+    min-width: 60px;
+    min-height: 60px;
+    height: 10vw;
+    border-radius: 50%;
+    background-color: rgb(0, 0, 0);
+    opacity: 0;
+    transition: opacity ease-in-out 0.1s;
+}
+
+/* additional icons in this section */
+.popular-artist-content a div div i {
+    margin: auto;
+    font-size: 3vw;
+    opacity: 0;
+    transition: opacity ease-in-out 0.2s;
+}
+
+/* added hovering effects */
+.popular-artist-content a div div:hover {
+    opacity: 0.5;
+}
+
+.popular-artist-content a div div:hover i {
+    opacity: 1;
+}
+
+/* text portion in popular artists section */
+.popular-artists div p {
+    text-align: center;
+}
+
+/* stations */
+.stations {
+    display: inline-flex;
+    position: relative;
+    top: 5vw;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+#mus-sta-fig img {
+    margin: 0 16px 0 0;
+    width: 75%;
+    height: 80%;
+}
+
+.stations .moods {
+    width: 100%;
+    overflow: hidden;
+    display: inline-flex;
+    flex-wrap: wrap;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+.stations .moods figure {
+    margin: 1% 2%;
+}
+
+.stations .moods img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    opacity: .5;
+    cursor: pointer;
+    transition: all 0.2 ease-in-out 0.2;
+}
+
+.stations .moods img:hover {
+    box-shadow: 0 0px 12px 0px white;
+}
+
+.stations .moods p {
+    color: whitesmoke;
+    position: relative;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    bottom: 66px;
+    /* font-size: 1.2rem; */
+    opacity: 0.8;
+    font-weight: 500;
+    background: transparent;
+}
+
+/* big-music-station */
+.big-music-station {
+    margin-top: 5%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100%;
+}
+
+.big-music-station figure {
+    margin-top: 1%;
+    margin-right: 1%;
+}
+
+.big-music-station figure img {
+    width: 300px;
+    height: 75%;
+    opacity: 0.5;
+    transition: all 1s ease-in-out;
+}
+
+.big-music-station figure img:hover {
+    box-shadow: 0 0px 12px 0px white;
+    /* transform: scale(1.2); */
+}
+
+.big-music-station figure p {
+    right: 5px;
+    color: whitesmoke;
+    position: relative;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 100px;
+    opacity: 0.8;
+    font-weight: 500;
+    background: transparent;
+}
+
+/* latest english */
+
+.latest-english {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.latest-english .latest-english-content {
+    display: inline-flex;
+    flex-direction: row;
+    /* flex-shrink: initial; */
+}
+
+.latest-english .latest-english-content figure {
+    padding-left: 1%;
+    padding-right: 3%;
+}
+
+.latest-english .latest-english-content img {
+    /* position: relative; */
+    width: 10rem;
+    height: 10rem;
+    margin-bottom: 3%;
+    transition: all 1s ease-in-out;
+}
+
+.latest-english .latest-english-content img:hover {
+    box-shadow: 0 0px 12px 0px white;
+    /* transform: scale(1.2); */
+}
+
+
+/* latest hindi */
+
+.latest-hindi {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-top: 3%;
+}
+
+.latest-hindi .latest-hindi-content {
+    display: inline-flex;
+    flex-direction: row;
+    /* flex-shrink: initial; */
+}
+
+.latest-hindi .latest-hindi-content figure {
+    padding-left: 1%;
+    padding-right: 3%;
+}
+
+.latest-hindi .latest-hindi-content img {
+    /* position: relative; */
+    width: 10rem;
+    height: 10rem;
+    margin-bottom: 3%;
+    transition: all 1s ease-in-out;
+}
+
+.latest-hindi .latest-hindi-content img:hover {
+    box-shadow: 0 0px 12px 0px white;
+    /* transform: scale(1.2); */
+}
+
+/* aside content */
+.mainContent aside {
+    position: relative;
+    width: 25%;
+    height: 100%;
+    /* margin-bottom: -500px; */
+    /* border: 1px solid #fff; */
+    /* background: #0b1320; */
+    color: aliceblue;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+}
+
+.mainContent aside h3 {
+
+    margin: 5px 0 5px 20px;
+}
+
+
+.asideContent {
+    height: 55%;
+    overflow: auto;
+
+}
+
+.asideContent::-webkit-scrollbar {
+    display: none;
+}
+
+.asideContent li {
+    width: max-content;
+    height: 3em;
+    list-style: none;
+    position: relative;
+    /* margin: 0; */
+    padding: 5px 0 5px 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: -5px;
+    cursor: pointer;
+    transition: .5s linear;
+}
+
+.asideContent li:hover {
+    background: rgb(182, 176, 176);
+}
+
+.asideContent li span {
+    font-size: 12px;
+    font-weight: 600;
+    /* color: #4c5262; */
+}
+
+.asideContent li img {
+    width: 32px;
+    height: 32px;
+    margin-left: 25px;
+}
+
+.asideContent li h5 {
+    font-size: 13px;
+    margin-left: 15px;
+    width: 150px;
+    /* border: 1px solid white; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.asideContent li h5 .subtitle {
+    font-size: 11px;
+    color: #abacaf;
+}
+
+.asideContent li .fas {
+    position: relative;
+    padding-left: 5px;
+    font-size: 16px;
+}
+
+/* aside content ends */
+
+/* footer content */
+footer {
+    position: sticky;
+    width: 90%;
+    height: 10%;
+    /* border: 1px solid #fff; */
+    background: #3c3d41;
+    box-shadow: 0px 3px 8px #090f1f;
+    display: none;
+    /* align-items: center; */
+}
+
+footer:target {
+    position: sticky;
+    width: 90%;
+    height: 10%;
+    /* border: 1px solid #fff; */
+    background: #3c3d41;
+    box-shadow: 0px 3px 8px #090f1f;
+    display: flex;
+    /* align-items: center; */
+}
+
+
+footer .wave {
+    width: 30px;
+    height: 30px;
+    background: #3c3d41;
+    display: flex;
+    align-items: flex-end;
+    margin: 15px 0 5px 50px;
+}
+
+footer .wave .wave1 {
+    width: 3px;
+    height: 10px;
+    background: #36e2ec;
+    margin-right: 3px;
+    border-radius: 10px 10px 0 0;
+    animation: wave 0.5s linear infinite;
+
+}
+
+footer .wave .wave1:nth-child(2) {
+    height: 13px;
+    animation-delay: .4s;
+}
+
+footer .wave .wave1:nth-child(3) {
+    height: 8px;
+    animation-delay: .8s;
+}
+
+@keyframes wave {
+    0% {
+        height: 10px;
+    }
+
+    50% {
+        height: 15px;
+    }
+
+    100% {
+        height: 10px;
+    }
+}
+
+footer img {
+    width: 35px;
+    height: 35px;
+    margin-top: 10px;
+}
+
+footer .title {
+    color: #abacaf;
+    margin-top: 15px;
+    margin-left: 5px;
+    font-size: 13px;
+    line-height: 17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: #3c3d41;
+}
+
+footer .title .subtitle {
+    font-size: 10px;
+    color: #797b7e;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: #3c3d41;
+}
+
+footer .heart-and-ban-icon {
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    outline: none;
+    align-items: center;
+    font-size: 15px;
+    background: #3c3d41;
+}
+
+footer .heart-and-ban-icon .fas {
+    padding-left: 10px;
+    cursor: pointer;
+    background: #3c3d41;
+}
+
+footer .playback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #3c3d41;
+}
+
+footer .playback .icon {
+    margin: 5px 200px 15px 350px;
+    display: flex;
+    flex-direction: row;
+    /* font-size: 20px; */
+    color: #fff;
+    outline: none;
+    /* align-items: center; */
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    width: 40%;
+    background: #3c3d41;
+}
+
+footer .playback .icon .fas {
+    padding-right: 10px;
+    cursor: pointer;
+    outline: none;
+    background: #3c3d41;
+}
+
+footer .playback .bar {
+    position: relative;
+    width: 60%;
+    height: 2px;
+    /* background: rgb(105, 105, 170, 1); */
+    margin: 0px 15px 0px 150px;
+    cursor: pointer;
+    /* outline: none; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background: #3c3d41;
+}
+
+
+footer .playback .bar input {
+    /* position: absolute; */
+    width: 500%;
+    height: 100%;
+    cursor: pointer;
+    background: #3c3d41;
+}
+
+footer .playback .bar .time {
+    position: relative;
+    /* width: 100%; */
+    /* height: 100%; */
+    color: white;
+    font-size: 13px;
+    margin: -10px 3px 0 3px;
+    background: #3c3d41;
+    cursor: pointer;
 }
